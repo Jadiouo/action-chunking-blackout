@@ -1,0 +1,15 @@
+episodes=5 identical_rows=2 differing_rows=3
+success identical: True | max_reward identical: True | mean_abs_d2 max abs diff: 0.00016802595928310004
+ episode  success  max_reward  steps  mean_abs_d2
+       0        1         4.0    308     0.002754
+       1        1         4.0    322     0.002743
+       2        1         4.0    277     0.002862
+       3        1         4.0    255     0.002583
+       4        1         4.0    312     0.003139
+         config   n  te  L   mode  episode  env_seed   t0  success  max_reward  replans_in_blackout  replans_total  mean_abs_d2  steps
+1  n25_L0_black  25   0  0  black        1         1  140        1         4.0                    0             13     0.002743    322
+2  n25_L0_black  25   0  0  black        2         2  236        1         4.0                    0             12     0.002862    277
+4  n25_L0_black  25   0  0  black        4         4  130        1         4.0                    0             13     0.003139    312
+1  n25_L0_black  25   0  0  black        1         1  140        1         4.0                    0             14     0.002911    327
+2  n25_L0_black  25   0  0  black        2         2  236        1         4.0                    0             12     0.002868    278
+4  n25_L0_black  25   0  0  black        4         4  130        1         4.0                    0             13     0.003161    312

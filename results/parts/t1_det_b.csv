@@ -1,0 +1,6 @@
+config,n,te,L,mode,episode,env_seed,t0,success,max_reward,replans_in_blackout,replans_total,mean_abs_d2,steps,seconds
+n25_L0_black,25,0,0,black,0,0,83,1,4.0,0,13,0.0027542116586118937,308,10.99
+n25_L0_black,25,0,0,black,1,1,140,1,4.0,0,14,0.0029106263536959887,327,14.2
+n25_L0_black,25,0,0,black,2,2,236,1,4.0,0,12,0.0028683349955826998,278,12.05
+n25_L0_black,25,0,0,black,3,3,113,1,4.0,0,11,0.002583107678219676,255,11.17
+n25_L0_black,25,0,0,black,4,4,130,1,4.0,0,13,0.0031611579470336437,312,14.29

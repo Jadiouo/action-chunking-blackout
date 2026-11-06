@@ -1,0 +1,16 @@
+{
+ "ckpt": "runs/dp/dp_v2/checkpoints/020000/pretrained_model",
+ "ema": true,
+ "infer": "default",
+ "n_action_steps": 8,
+ "L": 0,
+ "mode": "black",
+ "episodes": 10,
+ "successes": 0,
+ "rate": 0.0,
+ "wilson95": [
+  0.0,
+  0.2775401687666166
+ ],
+ "mean_max_reward": 0.0
+}

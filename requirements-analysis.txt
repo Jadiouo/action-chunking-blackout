@@ -1,0 +1,7 @@
+# Analysis only (no GPU, no simulator): code/analyze_arxiv.py and paper/arxiv/verify_numbers.py.
+# Versions used for the checked outputs (system Python 3.12.3). Other recent versions should give the same tables.
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+matplotlib==3.10.9
+scikit-learn==1.9.0  # only for code/make_realistic.py

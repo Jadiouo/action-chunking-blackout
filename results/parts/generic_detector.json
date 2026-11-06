@@ -1,0 +1,14 @@
+{
+ "K": 16,
+ "fit_frames": 3434,
+ "thr_frames": 3335,
+ "feat_dim": 6144,
+ "thr": 28.290725708007812,
+ "fit_score_p50": 13.85485553741455,
+ "fit_score_p99": 19.348756790161133,
+ "heldout_score_p50": 16.96119499206543,
+ "heldout_score_p99": 28.290725708007812,
+ "heldout_score_max": 29.821252822875977,
+ "heldout_frac_above_thr": 0.010194902548725637,
+ "explained_var_topK": 0.8113426566123962
+}

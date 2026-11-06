@@ -1,0 +1,17 @@
+\begin{tabular}{llrrrr}
+\toprule
+cell & rule & success & calls/ep & TE/other & $p$ (uncorrected) \\
+\midrule
+freeze $L{=}100$ & Median TE $h{=}1$ & 60/100 & 374.4 &  &  \\
+freeze $L{=}100$ & Median TE $h{=}10$ & 62/100 & 37.3 & 13/15 & 0.85 \\
+freeze $L{=}100$ & \fixed(50) & 55/100 & 7.7 & 27/22 & 0.57 \\
+freeze $L{=}100$ & \fixed(100) & 53/100 & 3.7 & 30/23 & 0.41 \\
+freeze $L{=}100$ & \hold(50) & 39/100 & 6.5 & 31/10 & 0.001 \\
+\midrule
+black $L{=}25$ & Median TE $h{=}1$ & 80/100 & 341.4 &  &  \\
+black $L{=}25$ & Median TE $h{=}10$ & 80/100 & 33.9 & 7/7 & 1.00 \\
+black $L{=}25$ & \fixed(50) & 63/100 & 7.1 & 28/11 & 0.009 \\
+black $L{=}25$ & \fixed(100) & 58/100 & 3.6 & 32/10 & 9.4e-4 \\
+black $L{=}25$ & \hold(50) & 86/100 & 6.5 & 10/16 & 0.33 \\
+\bottomrule
+\end{tabular}

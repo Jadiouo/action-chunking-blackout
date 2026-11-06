@@ -1,0 +1,14 @@
+\begin{tabular}{llrrr}
+\toprule
+family & contrast & x/y & $p$ & $p_{\mathrm{Holm}}$ (within family) \\
+\midrule
+F1 & oracle $n{=}25$ vs fixed (Ins.\ black, $L{=}50$) & 22/7 & 0.008 & 0.009 \\
+F1 & detect $n{=}25$ vs fixed & 25/8 & 0.005 & 0.009 \\
+F1 & oracle $n{=}50$ vs fixed & 29/4 & 1.1e-5 & 3.3e-5 \\
+F2 & OOD vs fixed, blur & 44/5 & 7.6e-9 & 1.5e-8 \\
+F2 & OOD vs fixed, dim & 6/1 & 0.125 & 0.125 \\
+F3 & TE $h{=}1$ vs hold, freeze $L{=}100$ & 31/10 & 0.001 & 0.004 \\
+F3 & TE $h{=}1$ vs hold, black $L{=}25$ & 10/16 & 0.33 & 0.65 \\
+F3 & TE $h{=}1$ vs fixed(50), freeze $L{=}100$ & 27/22 & 0.57 & 0.65 \\
+\bottomrule
+\end{tabular}

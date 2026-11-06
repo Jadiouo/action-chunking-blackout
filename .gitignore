@@ -1,0 +1,16 @@
+.venv/
+.hf/
+.scratch/
+runs/
+__pycache__/
+*.pyc
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.xdv
+*.blg
+*.bbl
+paper/arxiv/main.pdf
+paper/arxiv/arxiv_submission.tar.gz

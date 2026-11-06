@@ -1,0 +1,18 @@
+{
+ "chosen": [
+  "noise0.6",
+  "occlude0.5center",
+  "delay50",
+  "flicker0.6"
+ ],
+ "full_grid": [
+  "noise0.6",
+  "occlude0.5center",
+  "delay50"
+ ],
+ "mini_grid": [
+  "flicker0.6"
+ ],
+ "note": "入選（規則：R 最接近 0.5 且在 [0.15,0.85]；平手取較弱強度；flicker 的 p=1.0 等於整段連續損壞，不算間歇，不參選，故取 p=0.6）：noise σ=0.6（R=0.50）、occlude 面積 0.5 置中（R=0.62，與 0.75 置中同分，取較弱）、delay d=50（R=0.62）、flicker p=0.6（R=0.79）。全部強度都比黑畫面（同格 R≈0.40）溫和；沒有任何損壞「無害」（R>0.85 只有低強度）。預算：主實驗每格 90 seeds，noise／occlude／delay 各做 20 格（fixed/oracle/generic 各 6 格 + simple-detect 只做 n=50 的 2 格，因為它對這些損壞按設計不會觸發，用來驗證），flicker 只做 n=50 × L∈{50,100} × {fixed, oracle, generic}，合計 5,940 episodes ≤ 6000（試跑 480 與診斷另計）。",
+ "p3_corr": "noise0.6"
+}

@@ -1,0 +1,12 @@
+\begin{tabular}{lp{6.4cm}rrrp{3.2cm}}
+\toprule
+id & contrast & x/y & $p$ & $p_{\mathrm{Holm}}$ & pre-registered? \\
+\midrule
+P1 & TC, black, $L{=}50$, $n{=}50$: hold vs fixed (seeds 0--99) & 54/6 & 9.7e-11 & 5.8e-10 & no \\
+P2 & TC, freeze, $L{=}100$, $n{=}50$: hold vs fixed (seeds 150--249) & 1/17 & 1.4e-4 & 4.3e-4 & no \\
+P3 & Insertion, black, $L{=}50$, $n{=}50$: hold vs new fixed (reward${=}4$) & 29/4 & 1.1e-5 & 4.4e-5 & yes, F1 \\
+P4 & TC, unseen blur: OOD detector vs fixed ($n{=}50$, $L{=}50$) & 44/5 & 7.6e-9 & 3.8e-8 & yes, F2 \\
+P5 & TC, unseen dim: OOD detector vs fixed ($n{=}50$, $L{=}50$) & 6/1 & 0.125 & 0.125 & yes, F2 \\
+P6 & TC, freeze, $L{=}100$: Median TE $h{=}1$ vs hold $n{=}50$ (seeds 150--249) & 31/10 & 0.001 & 0.003 & yes, F3 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,20 @@
+# Simulation runs (code/run_grid.py, run_t3t4.py, run_p2p3.py, run_p2b.py). Python 3.10, NVIDIA GPU, MUJOCO_GL=egl.
+# Main packages of the environment the experiments ran in (full list not pinned). PyTorch was the CUDA 12.8 build (2.10.0+cu128).
+torch==2.10.0
+torchvision==0.25.0
+lerobot==0.4.4
+gym-aloha==0.1.5
+mujoco==3.8.1
+gymnasium==1.4.0
+dm-control==1.0.41
+dm-env==1.6
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+opencv-python-headless==4.12.0.88
+safetensors==0.8.0
+huggingface-hub==0.35.3
+diffusers==0.35.2
+pillow==12.3.0
+pyopengl==3.1.10
+imageio==2.38.0

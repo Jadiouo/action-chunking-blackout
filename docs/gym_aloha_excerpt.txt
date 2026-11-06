@@ -1,0 +1,81 @@
+Excerpts of gym-aloha 0.1.5 (https://github.com/huggingface/gym-aloha, Apache-2.0 per the package metadata).
+Copied unchanged so that paper/arxiv/verify_numbers.py can check the reward levels and the success criterion
+quoted in the paper without installing the simulator. If gym_aloha is installed, verify_numbers.py checks the installed source too.
+
+=== gym_aloha/tasks/sim.py, class InsertionTask (lines 152-218 of the 0.1.5 release) ===
+class InsertionTask(BimanualViperXTask):
+    def __init__(self, random=None):
+        super().__init__(random=random)
+        self.max_reward = 4
+
+    def initialize_episode(self, physics):
+        """Sets the state of the environment at the start of each episode."""
+        # TODO Notice: this function does not randomize the env configuration. Instead, set BOX_POSE from outside
+        # reset qpos, control and box position
+        with physics.reset_context():
+            physics.named.data.qpos[:16] = START_ARM_POSE
+            np.copyto(physics.data.ctrl, START_ARM_POSE)
+            assert BOX_POSE[0] is not None
+            physics.named.data.qpos[-7 * 2 :] = BOX_POSE[0]  # two objects
+            # print(f"{BOX_POSE=}")
+        super().initialize_episode(physics)
+
+    @staticmethod
+    def get_env_state(physics):
+        env_state = physics.data.qpos.copy()[16:]
+        return env_state
+
+    def get_reward(self, physics):
+        # return whether peg touches the pin
+        all_contact_pairs = []
+        for i_contact in range(physics.data.ncon):
+            id_geom_1 = physics.data.contact[i_contact].geom1
+            id_geom_2 = physics.data.contact[i_contact].geom2
+            name_geom_1 = physics.model.id2name(id_geom_1, "geom")
+            name_geom_2 = physics.model.id2name(id_geom_2, "geom")
+            contact_pair = (name_geom_1, name_geom_2)
+            all_contact_pairs.append(contact_pair)
+
+        touch_right_gripper = ("red_peg", "vx300s_right/10_right_gripper_finger") in all_contact_pairs
+        touch_left_gripper = (
+            ("socket-1", "vx300s_left/10_left_gripper_finger") in all_contact_pairs
+            or ("socket-2", "vx300s_left/10_left_gripper_finger") in all_contact_pairs
+            or ("socket-3", "vx300s_left/10_left_gripper_finger") in all_contact_pairs
+            or ("socket-4", "vx300s_left/10_left_gripper_finger") in all_contact_pairs
+        )
+
+        peg_touch_table = ("red_peg", "table") in all_contact_pairs
+        socket_touch_table = (
+            ("socket-1", "table") in all_contact_pairs
+            or ("socket-2", "table") in all_contact_pairs
+            or ("socket-3", "table") in all_contact_pairs
+            or ("socket-4", "table") in all_contact_pairs
+        )
+        peg_touch_socket = (
+            ("red_peg", "socket-1") in all_contact_pairs
+            or ("red_peg", "socket-2") in all_contact_pairs
+            or ("red_peg", "socket-3") in all_contact_pairs
+            or ("red_peg", "socket-4") in all_contact_pairs
+        )
+        pin_touched = ("red_peg", "pin") in all_contact_pairs
+
+        reward = 0
+        if touch_left_gripper and touch_right_gripper:  # touch both
+            reward = 1
+        if (
+            touch_left_gripper and touch_right_gripper and (not peg_touch_table) and (not socket_touch_table)
+        ):  # grasp both
+            reward = 2
+        if peg_touch_socket and (not peg_touch_table) and (not socket_touch_table):  # peg and socket touching
+            reward = 3
+        if pin_touched:  # successful insertion
+            reward = 4
+
+=== gym_aloha/env.py (line 180 of the 0.1.5 release) ===
+        terminated = is_success = reward == 4
+
+=== gym_aloha/assets/bimanual_viperx_insertion.xml (geoms of the peg and socket, 0.1.5 release) ===
+<geom condim="4" solimp="2 1 0.01" solref="0.01 1" friction="1 0.005 0.0001" pos="0 0 0" size="0.06 0.01 0.01" type="box" name="red_peg" rgba="1 0 0 1" />
+<geom condim="4" solimp="2 1 0.01" solref="0.01 1" friction="1 0.05 0.001" pos="0 0 -0.02" size="0.06 0.018 0.002" type="box" name="socket-1" rgba="0 0 1 1" />
+<geom condim="4" solimp="2 1 0.01" solref="0.01 1" friction="1 0.05 0.001" pos="0 0.02 0" size="0.06 0.002 0.018" type="box" name="socket-3" rgba="0 0 1 1" />
+<geom condim="4" solimp="2 1 0.01" solref="0.01 1" friction="1 0.005 0.0001" pos="0 0 0" size="0.04 0.01 0.01" type="box" name="pin" rgba="1 0 0 1" />
